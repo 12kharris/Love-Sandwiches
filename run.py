@@ -20,6 +20,35 @@ def get_sales_data():
     print("Data should be 6 numbers seperated by commas")
     print("Example: 10,20,30,40,50,60\n")
 
-    data_str = input("Enter your data here: ")
+    validated = False
 
-get_sales_data()
+    while(not validated):
+        data_str = input("Enter your data here: ")
+
+        sales_data = data_str.split(",")
+        validated = validate_data(sales_data)
+
+    print("Data received")
+    return sales_data
+
+
+def validate_data(values):
+    """
+    Validates whether the input data contains the correct number 
+    of values and data types
+    """
+    try:
+        if(len(values) != 6):
+            raise ValueError(
+                f"Invalid data. Expected 6 values, received {len(values)}"
+            )
+        [int(value) for value in values] #convert each data entry into an int
+    except ValueError as e:
+        print(e)
+        print("Please try again\n")
+        return False
+
+    return True
+
+
+data = get_sales_data()
