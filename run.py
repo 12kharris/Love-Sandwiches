@@ -23,7 +23,7 @@ def get_sales_data():
     validated = False
 
     while(not validated):
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here:\n ")
 
         sales_data = data_str.split(",")
         validated = validate_data(sales_data)
